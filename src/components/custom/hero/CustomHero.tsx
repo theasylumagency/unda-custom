@@ -1,47 +1,73 @@
+"use client";
+
+import {
+  motion,
+  type MotionStyle,
+  type MotionValue,
+} from "framer-motion";
+import { HeroAtmosphere } from "./HeroAtmosphere";
 import { HeroCopy } from "./HeroCopy";
 import { HeroScene } from "./HeroScene";
-import { HeroScrollTransition } from "./HeroScrollTransition";
+import { getCustomContent } from "@/content/custom";
+import type { Locale } from "@/lib/i18n";
 import styles from "./hero.module.css";
 
-function Wordmark() {
-  return (
-    <a className={styles.wordmark} href="#top" aria-label="unda custom home">
-      <span className={styles.wordmarkSymbol} aria-hidden="true">
-        u
-      </span>
-      <span>unda</span>
-      <i />
-      <small>custom</small>
-    </a>
-  );
+interface CustomHeroProps {
+  architectureStyle?: MotionStyle;
+  beamStyle?: MotionStyle;
+  copyStyle?: MotionStyle;
+  davidStyle?: MotionStyle;
+  fragmentStyle?: MotionStyle;
+  reducedMotion: boolean;
+  structureX?: MotionValue<number>;
+  structureY?: MotionValue<number>;
+  locale: Locale;
 }
 
-export function CustomHero() {
+export function CustomHero({
+  architectureStyle,
+  beamStyle,
+  copyStyle,
+  davidStyle,
+  fragmentStyle,
+  reducedMotion,
+  structureX,
+  structureY,
+  locale,
+}: CustomHeroProps) {
+  const { hero } = getCustomContent(locale);
+
   return (
-    <section className={styles.hero} id="top" aria-labelledby="hero-title">
-      <div className={styles.texture} aria-hidden="true" />
-
-      <header className={styles.header}>
-        <Wordmark />
-        <div className={styles.headerMeta}>
-          <span>Custom Operators</span>
-          <span className={styles.availability}>
-            <i aria-hidden="true" />
-            Accepting projects
-          </span>
-        </div>
-        <a className={styles.headerContact} href="#operator-intake">
-          Start a conversation
-          <span aria-hidden="true">↗</span>
-        </a>
-      </header>
-
+    <motion.section
+      className={styles.hero}
+      data-nav-theme="dark"
+      id="top"
+      aria-labelledby="hero-title"
+    >
+      <HeroAtmosphere />
       <div className={styles.heroGrid}>
-        <HeroCopy />
-        <HeroScene />
+        <HeroCopy reducedMotion={reducedMotion} scrollStyle={copyStyle} locale={locale} />
+        <HeroScene
+          architectureStyle={architectureStyle}
+          beamStyle={beamStyle}
+          davidStyle={davidStyle}
+          fragmentStyle={fragmentStyle}
+          reducedMotion={reducedMotion}
+          structureX={structureX}
+          structureY={structureY}
+          locale={locale}
+        />
       </div>
-
-      <HeroScrollTransition />
-    </section>
+      <motion.div
+        className={styles.scrollCue}
+        aria-hidden="true"
+        initial={reducedMotion ? false : { opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2.1, duration: 0.5 }}
+      >
+        <span />
+        <small>{hero.scrollCue}</small>
+      </motion.div>
+    </motion.section>
   );
 }

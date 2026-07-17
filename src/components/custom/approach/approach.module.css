@@ -1,0 +1,1588 @@
+.approach {
+  --approach-bg: #d8d8cf;
+  --approach-paper: #deded6;
+  --approach-ink: #242622;
+  --approach-muted: #656861;
+  --approach-faint: #8b8e86;
+  --approach-line: rgb(36 38 34 / 17%);
+  --approach-line-strong: rgb(36 38 34 / 34%);
+  --approach-accent: #955f42;
+  position: relative;
+  z-index: 21;
+  overflow: clip;
+  background:
+    linear-gradient(to bottom, #eee9df 0, var(--approach-bg) clamp(110px, 14vw, 230px)),
+    var(--approach-bg);
+  color: var(--approach-ink);
+  isolation: isolate;
+}
+
+.approach::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  opacity: 0.14;
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0 63px, rgb(36 38 34 / 5%) 63px 64px),
+    repeating-linear-gradient(90deg, transparent 0 79px, rgb(255 255 255 / 16%) 79px 80px),
+    repeating-radial-gradient(circle at 27% 38%, transparent 0 1px, rgb(36 38 34 / 9%) 1px 1.25px, transparent 1.25px 5px);
+  content: "";
+  pointer-events: none;
+  mask-image: linear-gradient(to bottom, transparent, #000 10%, #000 94%, transparent);
+}
+
+.carryLine {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: clamp(110px, 14vw, 230px);
+  background: linear-gradient(to bottom, rgb(157 103 72 / 38%), rgb(36 38 34 / 22%) 58%, transparent);
+}
+
+.carryLine i {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  border: 1px solid var(--approach-accent);
+  background: var(--approach-bg);
+}
+
+.sectionHeader,
+.method,
+.result,
+.finalStatement {
+  width: calc(100% - clamp(48px, 9vw, 160px));
+  max-width: 1720px;
+  margin-inline: auto;
+  height: 25vh;
+  min-height: 100px;
+}
+
+.sectionHeader {
+  display: grid;
+  min-height: 92svh;
+  align-content: center;
+  padding-block: clamp(170px, 18vw, 290px) clamp(100px, 10vw, 170px);
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.32fr);
+  column-gap: clamp(40px, 7vw, 120px);
+}
+
+.eyebrow,
+.stepLabel,
+.visualOutcome,
+.visualQuestion,
+.approachNote,
+.buildNote,
+.definedRole small,
+.operationalRole small,
+.roleDefinition dt {
+  font-family: var(--font-geist-mono), monospace;
+  font-weight: 540;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  grid-column: 1 / -1;
+  margin: 0 0 clamp(38px, 5vh, 62px);
+  color: var(--approach-muted);
+  font-size: clamp(9px, 0.67vw, 12px);
+  letter-spacing: 0.2em;
+}
+
+.sectionHeader h2 {
+  grid-column: 1 / -1;
+  max-width: 1260px;
+  margin: 0;
+  font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+  font-size: clamp(68px, 6.35vw, 106px);
+  font-weight: 400;
+  letter-spacing: -0.052em;
+  line-height: 0.97;
+}
+
+.sectionHeader h2 span {
+  display: block;
+}
+
+.sectionHeader h2 span+span {
+  max-width: 860px;
+  margin-top: 0.22em;
+  margin-left: clamp(70px, 10vw, 180px);
+  color: #383b36;
+}
+
+.transition {
+  grid-column: 2;
+  max-width: 300px;
+  margin: clamp(48px, 7vh, 76px) 0 0;
+  padding-top: 20px;
+  border-top: 1px solid var(--approach-line-strong);
+  color: var(--approach-accent);
+  font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+  font-size: clamp(22px, 1.65vw, 30px);
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+.method {
+  position: relative;
+  counter-reset: method;
+}
+
+.method::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 42%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--approach-line-strong) 4%, var(--approach-line-strong) 96%, transparent);
+  content: "";
+}
+
+.methodStep {
+  position: relative;
+  display: grid;
+  min-height: clamp(540px, 64svh, 760px);
+  align-items: center;
+  border-top: 1px solid var(--approach-line);
+  grid-template-columns: minmax(320px, 0.73fr) minmax(500px, 1fr);
+  gap: clamp(58px, 8vw, 138px);
+}
+
+.methodStep:last-child {
+  border-bottom: 1px solid var(--approach-line);
+}
+
+.methodStep::before {
+  position: absolute;
+  top: -4px;
+  left: 42%;
+  width: 7px;
+  height: 7px;
+  transform: translateX(-50%) rotate(45deg);
+  border: 1px solid var(--approach-accent);
+  background: var(--approach-bg);
+  content: "";
+}
+
+.stepCopy {
+  max-width: 560px;
+  padding: clamp(70px, 9vh, 110px) 0;
+}
+
+.stepLabel {
+  margin: 0 0 clamp(28px, 4vh, 44px);
+  color: var(--approach-muted);
+  font-size: clamp(9px, 0.66vw, 11px);
+}
+
+.stepLabel span {
+  color: var(--approach-accent);
+}
+
+.stepCopy h3 {
+  max-width: 510px;
+  margin: 0;
+  font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+  font-size: clamp(38px, 3.15vw, 54px);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+}
+
+.stepBody {
+  max-width: 530px;
+  margin: clamp(26px, 3.7vh, 40px) 0 0;
+  color: var(--approach-muted);
+  font-size: clamp(16px, 1.15vw, 20px);
+  line-height: 1.58;
+}
+
+.stepVisual {
+  position: relative;
+  min-width: 0;
+  min-height: clamp(360px, 43svh, 500px);
+}
+
+.frictionVisual {
+  display: grid;
+  align-content: center;
+  grid-template-rows: 1fr auto auto;
+  gap: 38px;
+}
+
+.signalField {
+  position: relative;
+  min-height: 210px;
+}
+
+.frictionSignal {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed var(--approach-line-strong);
+  color: #5d6059;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: clamp(8px, 0.62vw, 11px);
+  letter-spacing: 0.1em;
+}
+
+.frictionSignal i {
+  width: 5px;
+  height: 5px;
+  transform: rotate(45deg);
+  border: 1px solid currentColor;
+}
+
+.frictionSignal[data-position="1"] {
+  top: 7%;
+  left: 7%;
+}
+
+.frictionSignal[data-position="2"] {
+  top: 20%;
+  right: 7%;
+}
+
+.frictionSignal[data-position="3"] {
+  top: 51%;
+  left: 26%;
+}
+
+.frictionSignal[data-position="4"] {
+  right: 20%;
+  bottom: 3%;
+}
+
+.frictionSignal[data-position="5"] {
+  bottom: 8%;
+  left: 1%;
+  color: var(--approach-accent);
+}
+
+.brokenFlow {
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto 1fr 14px 0.35fr auto;
+  gap: 12px;
+  color: var(--approach-faint);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: clamp(8px, 0.58vw, 10px);
+  letter-spacing: 0.11em;
+}
+
+.brokenFlow i {
+  height: 1px;
+  background: var(--approach-line-strong);
+}
+
+.brokenFlow b {
+  position: relative;
+  width: 10px;
+  height: 18px;
+  border-right: 1px solid var(--approach-accent);
+  border-left: 1px solid var(--approach-accent);
+}
+
+.visualOutcome {
+  width: fit-content;
+  margin: 0 0 0 auto;
+  color: var(--approach-accent);
+  font-size: clamp(9px, 0.64vw, 11px);
+}
+
+.visualOutcome i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 10px;
+  transform: rotate(45deg);
+  background: currentColor;
+}
+
+.approachVisual {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.visualQuestion {
+  margin: 0 0 34px;
+  color: var(--approach-muted);
+  font-size: clamp(8px, 0.6vw, 10px);
+}
+
+.approachPaths {
+  border-top: 1px solid var(--approach-line);
+}
+
+.approachPath {
+  display: grid;
+  align-items: center;
+  border-bottom: 1px solid var(--approach-line);
+  padding: 22px 0;
+  grid-template-columns: minmax(210px, 0.8fr) 1fr;
+  gap: 30px;
+}
+
+.approachPath>div {
+  display: grid;
+  grid-template-columns: minmax(110px, auto) 1fr;
+  gap: 20px;
+}
+
+.approachPath strong {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: clamp(10px, 0.74vw, 13px);
+  font-weight: 570;
+  letter-spacing: 0.11em;
+}
+
+.approachPath span {
+  color: var(--approach-muted);
+  font-size: clamp(11px, 0.78vw, 14px);
+}
+
+.approachPath>i {
+  position: relative;
+  height: 1px;
+  background: var(--approach-line-strong);
+}
+
+.approachPath>i::after {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 6px;
+  height: 6px;
+  transform: translate(50%, -50%) rotate(45deg);
+  border: 1px solid #757970;
+  background: var(--approach-bg);
+  content: "";
+}
+
+.approachPath>i b {
+  position: absolute;
+  top: -4px;
+  left: 42%;
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+  border: 1px solid var(--approach-line-strong);
+  background: var(--approach-bg);
+}
+
+.approachPath[data-path="operator"] {
+  color: var(--approach-accent);
+}
+
+.approachPath[data-path="operator"]>i {
+  height: 3px;
+  background: linear-gradient(90deg, var(--approach-accent), rgb(149 95 66 / 24%));
+}
+
+.approachPath[data-path="operator"]>i::before {
+  position: absolute;
+  top: -14px;
+  right: 18%;
+  color: var(--approach-accent);
+  content: "CONTEXT · VARIATION · BOUNDARY";
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 7px;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.approachNote,
+.buildNote {
+  margin: 26px 0 0;
+  color: var(--approach-faint);
+  font-size: clamp(8px, 0.58vw, 10px);
+  text-align: right;
+}
+
+.roleVisual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 34px;
+}
+
+.roleFrame {
+  position: relative;
+  display: flex;
+  width: min(78%, 540px);
+  min-height: 310px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--approach-line-strong);
+}
+
+.roleFrame::before,
+.roleFrame::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: var(--approach-line);
+  content: "";
+}
+
+.roleFrame::before {
+  width: 120%;
+  height: 1px;
+  transform: translate(-50%, -50%);
+}
+
+.roleFrame::after {
+  width: 1px;
+  height: 128%;
+  transform: translate(-50%, -50%);
+}
+
+.roleFrame>span {
+  position: absolute;
+  z-index: 2;
+  padding: 6px 10px;
+  background: var(--approach-bg);
+  color: var(--approach-muted);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: clamp(8px, 0.62vw, 11px);
+  letter-spacing: 0.12em;
+}
+
+.roleFrame>span[data-boundary="1"] {
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.roleFrame>span[data-boundary="2"] {
+  top: 50%;
+  right: 0;
+  transform: translate(50%, -50%);
+}
+
+.roleFrame>span[data-boundary="3"] {
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.roleFrame>span[data-boundary="4"] {
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+
+.definedRole {
+  position: relative;
+  z-index: 1;
+  width: 62%;
+  border-top: 1px solid var(--approach-accent);
+  border-bottom: 1px solid var(--approach-accent);
+  padding: 27px 12px;
+  background: var(--approach-bg);
+  text-align: center;
+}
+
+.definedRole small,
+.operationalRole small {
+  color: var(--approach-accent);
+  font-size: clamp(7px, 0.54vw, 9px);
+}
+
+.definedRole strong {
+  display: block;
+  margin-top: 14px;
+  font-size: clamp(13px, 1.02vw, 18px);
+  font-weight: 520;
+  letter-spacing: 0.08em;
+  line-height: 1.35;
+}
+
+.definedRole i {
+  position: absolute;
+  top: 50%;
+  right: -4px;
+  width: 7px;
+  height: 7px;
+  transform: translateY(-50%) rotate(45deg);
+  background: var(--approach-accent);
+}
+
+.humanBoundary {
+  display: grid;
+  width: min(78%, 540px);
+  align-items: center;
+  grid-template-columns: auto 1fr auto;
+  gap: 14px;
+  color: var(--approach-faint);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: clamp(7px, 0.56vw, 9px);
+  letter-spacing: 0.1em;
+}
+
+.humanBoundary i {
+  height: 1px;
+  background: repeating-linear-gradient(90deg, var(--approach-line-strong) 0 5px, transparent 5px 10px);
+}
+
+.buildVisual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.systemMap {
+  position: relative;
+  width: min(92%, 650px);
+  min-height: 370px;
+}
+
+.systemMap>span {
+  position: absolute;
+  z-index: 2;
+  min-width: 96px;
+  border-bottom: 1px solid var(--approach-line-strong);
+  padding: 0 3px 9px;
+  background: var(--approach-bg);
+  color: var(--approach-muted);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: clamp(7px, 0.58vw, 10px);
+  letter-spacing: 0.1em;
+  text-align: center;
+}
+
+.systemMap>span i {
+  position: absolute;
+  top: calc(100% + 1px);
+  left: 50%;
+  width: 1px;
+  height: 82px;
+  transform-origin: top;
+  background: linear-gradient(to bottom, var(--approach-line-strong), transparent);
+}
+
+.systemMap>span i::after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  transform: translate(-50%, 50%) rotate(45deg);
+  border: 1px solid #74786f;
+  background: var(--approach-bg);
+  content: "";
+}
+
+.systemMap>span[data-system="1"] {
+  top: 4%;
+  left: 6%;
+}
+
+.systemMap>span[data-system="2"] {
+  top: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.systemMap>span[data-system="3"] {
+  top: 4%;
+  right: 6%;
+}
+
+.systemMap>span[data-system="4"] {
+  right: 4%;
+  bottom: 3%;
+}
+
+.systemMap>span[data-system="5"] {
+  bottom: 1%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.systemMap>span[data-system="6"] {
+  bottom: 3%;
+  left: 4%;
+}
+
+.systemMap>span[data-system="1"] i {
+  transform: rotate(-34deg);
+}
+
+.systemMap>span[data-system="2"] i {
+  height: 96px;
+}
+
+.systemMap>span[data-system="3"] i {
+  transform: rotate(34deg);
+}
+
+.systemMap>span[data-system="4"] i,
+.systemMap>span[data-system="5"] i,
+.systemMap>span[data-system="6"] i {
+  top: auto;
+  bottom: calc(100% + 1px);
+  transform-origin: bottom;
+  background: linear-gradient(to top, var(--approach-line-strong), transparent);
+}
+
+.systemMap>span[data-system="4"] i {
+  transform: rotate(34deg);
+}
+
+.systemMap>span[data-system="5"] i {
+  height: 96px;
+}
+
+.systemMap>span[data-system="6"] i {
+  transform: rotate(-34deg);
+}
+
+.systemMap>span[data-system="4"] i::after,
+.systemMap>span[data-system="5"] i::after,
+.systemMap>span[data-system="6"] i::after {
+  top: 0;
+  bottom: auto;
+}
+
+.operationalRole {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  width: min(310px, 50%);
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--approach-accent);
+  padding: 28px 24px;
+  background: var(--approach-paper);
+  text-align: center;
+}
+
+.operationalRole strong {
+  display: block;
+  margin-top: 12px;
+  font-size: clamp(14px, 1.1vw, 19px);
+  font-weight: 540;
+  letter-spacing: 0.08em;
+}
+
+.operationalRole p {
+  margin: 16px 0 0;
+  color: var(--approach-muted);
+  font-size: clamp(10px, 0.72vw, 12px);
+  line-height: 1.5;
+}
+
+.result {
+  display: grid;
+  min-height: 84svh;
+  align-items: center;
+  border-bottom: 1px solid var(--approach-line-strong);
+  padding-block: clamp(110px, 13vw, 210px);
+  grid-template-columns: minmax(420px, 1.12fr) minmax(360px, 0.88fr);
+  gap: clamp(70px, 10vw, 170px);
+}
+
+.resultCopy p {
+  margin: 0;
+  font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+  font-size: clamp(25px, 2vw, 35px);
+  letter-spacing: -0.047em;
+  line-height: 1.01;
+}
+
+.resultCopy p+p {
+  margin-top: 0.55em;
+  color: #41443e;
+  font-size: clamp(15px, 1.65vw, 23px);
+  line-height: 1.08;
+}
+
+.roleDefinition {
+  margin: 0;
+  border-top: 1px solid var(--approach-line-strong);
+}
+
+.roleDefinition div {
+  display: grid;
+  border-bottom: 1px solid var(--approach-line);
+  padding: 18px 0;
+  grid-template-columns: 0.85fr 1fr;
+  gap: 24px;
+}
+
+.roleDefinition dt {
+  color: var(--approach-faint);
+  font-size: clamp(8px, 0.6vw, 10px);
+}
+
+.roleDefinition dd {
+  margin: 0;
+  color: #41443e;
+  font-size: clamp(13px, 0.94vw, 16px);
+}
+
+.finalStatement {
+  display: grid;
+  min-height: 82svh;
+  align-content: center;
+  padding-block: clamp(120px, 15vw, 240px);
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 70px;
+}
+
+.finalStatement>div p {
+  margin: 0;
+  font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+  font-size: clamp(48px, 4.8vw, 82px);
+  letter-spacing: -0.05em;
+  line-height: 0.98;
+}
+
+.finalStatement>div p+p {
+  margin-top: 0.18em;
+  color: var(--approach-accent);
+}
+
+.finalStatement a {
+  display: inline-flex;
+  min-width: 270px;
+  align-items: center;
+  justify-content: space-between;
+  align-self: end;
+  gap: 30px;
+  border-bottom: 1px solid var(--approach-line-strong);
+  padding: 18px 0;
+  color: #393c36;
+  font-size: clamp(14px, 1vw, 17px);
+  transition: border-color 220ms ease, color 220ms ease;
+}
+
+.finalStatement a i {
+  color: var(--approach-accent);
+  font-size: 22px;
+  font-style: normal;
+  transition: transform 220ms ease;
+}
+
+.finalStatement a:hover,
+.finalStatement a:focus-visible {
+  border-color: var(--approach-accent);
+  color: var(--approach-accent);
+}
+
+.finalStatement a:hover i,
+.finalStatement a:focus-visible i {
+  transform: translateX(5px);
+}
+
+.finalStatement a:focus-visible {
+  outline: 2px solid var(--approach-accent);
+  outline-offset: 6px;
+}
+
+@media (min-width: 1100px) and (max-width: 1299px) {
+  .methodStep {
+    grid-template-columns: minmax(300px, 0.72fr) minmax(440px, 1fr);
+    gap: 70px;
+  }
+
+  .method::before,
+  .methodStep::before {
+    left: 41%;
+  }
+
+  .approachPath {
+    grid-template-columns: 1fr 0.7fr;
+  }
+
+  .approachPath>div {
+    display: block;
+  }
+
+  .approachPath span {
+    display: block;
+    margin-top: 7px;
+  }
+}
+
+@media (max-width: 1099px) {
+
+  .sectionHeader,
+  .method,
+  .result,
+  .finalStatement {
+    width: calc(100% - 80px);
+    max-width: 900px;
+  }
+
+  .sectionHeader {
+    display: block;
+    min-height: auto;
+    padding-block: 190px 140px;
+  }
+
+  .sectionHeader h2 {
+    font-size: clamp(60px, 8.8vw, 84px);
+  }
+
+  .sectionHeader h2 span+span {
+    margin-left: 7vw;
+  }
+
+  .transition {
+    max-width: 320px;
+    margin-left: auto;
+  }
+
+  .method::before {
+    left: 0;
+  }
+
+  .methodStep {
+    display: block;
+    min-height: auto;
+    padding: 100px 0 120px 38px;
+  }
+
+  .methodStep::before {
+    left: 0;
+  }
+
+  .stepCopy {
+    max-width: 680px;
+    padding: 0;
+  }
+
+  .stepVisual {
+    max-width: 720px;
+    min-height: 410px;
+    margin: 84px auto 0;
+  }
+
+  .result {
+    min-height: auto;
+    padding-block: 150px;
+    grid-template-columns: 1fr;
+  }
+
+  .roleDefinition {
+    max-width: 660px;
+  }
+
+  .finalStatement {
+    min-height: auto;
+    padding-block: 160px;
+    grid-template-columns: 1fr;
+  }
+
+  .finalStatement a {
+    width: min(100%, 380px);
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .approach::before {
+    opacity: 0.08;
+  }
+
+  .sectionHeader,
+  .method,
+  .result,
+  .finalStatement {
+    width: calc(100% - 48px);
+  }
+
+  .carryLine {
+    left: 30%;
+    height: 150px;
+  }
+
+  .sectionHeader {
+    padding-block: 150px 105px;
+  }
+
+  .eyebrow {
+    margin-bottom: 34px;
+    font-size: 8px;
+  }
+
+  .sectionHeader h2 {
+    font-size: clamp(46px, 13.5vw, 62px);
+    line-height: 0.99;
+  }
+
+  .sectionHeader h2 span+span {
+    margin-top: 0.38em;
+    margin-left: 0;
+  }
+
+  .transition {
+    margin-top: 46px;
+    font-size: 23px;
+  }
+
+  .methodStep {
+    padding: 78px 0 94px 22px;
+  }
+
+  .stepLabel {
+    margin-bottom: 25px;
+    font-size: 8px;
+    line-height: 1.5;
+  }
+
+  .stepCopy h3 {
+    font-size: clamp(34px, 10vw, 45px);
+  }
+
+  .stepBody {
+    margin-top: 24px;
+    font-size: 15px;
+    line-height: 1.58;
+  }
+
+  .stepVisual {
+    min-height: 340px;
+    margin-top: 62px;
+  }
+
+  .signalField {
+    min-height: 190px;
+  }
+
+  .frictionSignal {
+    font-size: 7px;
+  }
+
+  .frictionSignal[data-position="2"] {
+    right: 0;
+  }
+
+  .frictionSignal[data-position="3"] {
+    left: 17%;
+  }
+
+  .frictionSignal[data-position="4"] {
+    right: 5%;
+  }
+
+  .brokenFlow {
+    grid-template-columns: auto 1fr 10px 0.3fr auto;
+    gap: 7px;
+    font-size: 6px;
+  }
+
+  .approachPath {
+    display: block;
+    padding: 19px 0;
+  }
+
+  .approachPath>div {
+    display: block;
+  }
+
+  .approachPath span {
+    display: block;
+    margin-top: 7px;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .approachPath>i {
+    display: block;
+    margin-top: 15px;
+  }
+
+  .approachPath[data-path="operator"]>i::before {
+    display: none;
+  }
+
+  .roleFrame,
+  .humanBoundary {
+    width: 86%;
+  }
+
+  .roleFrame {
+    min-height: 250px;
+  }
+
+  .definedRole {
+    width: 72%;
+  }
+
+  .roleFrame>span {
+    font-size: 7px;
+  }
+
+  .systemMap {
+    width: 100%;
+    min-height: 330px;
+  }
+
+  .systemMap>span {
+    min-width: 76px;
+    font-size: 6px;
+  }
+
+  .systemMap>span[data-system="1"] {
+    left: 0;
+  }
+
+  .systemMap>span[data-system="3"] {
+    right: 0;
+  }
+
+  .systemMap>span[data-system="4"] {
+    right: 0;
+  }
+
+  .systemMap>span[data-system="6"] {
+    left: 0;
+  }
+
+  .operationalRole {
+    width: 58%;
+    padding: 23px 12px;
+  }
+
+  .operationalRole strong {
+    font-size: 12px;
+  }
+
+  .operationalRole p {
+    font-size: 9px;
+  }
+
+  .result {
+    padding-block: 110px;
+    gap: 70px;
+  }
+
+  .resultCopy p {
+    font-size: clamp(20px, 4vw, 26px);
+  }
+
+  .resultCopy p+p {
+    font-size: clamp(17px, 3.8vw, 16px);
+  }
+
+  .roleDefinition div {
+    grid-template-columns: 0.8fr 1fr;
+    gap: 14px;
+  }
+
+  .finalStatement {
+    padding-block: 120px 140px;
+  }
+
+  .finalStatement>div p {
+    font-size: clamp(43px, 12.5vw, 58px);
+  }
+
+  .finalStatement a {
+    min-width: 0;
+    margin-top: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .finalStatement a,
+  .finalStatement a i {
+    transition: none;
+  }
+}
+
+/* Split-screen method sequence */
+.methodTrack {
+  position: relative;
+  height: 340svh;
+}
+
+.stickyViewport {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.splitLayout {
+  display: grid;
+  width: calc(100% - clamp(48px, 9vw, 160px));
+  max-width: 1720px;
+  height: 100%;
+  margin-inline: auto;
+  grid-template-columns: minmax(360px, 0.78fr) minmax(560px, 1.22fr);
+  gap: clamp(42px, 5vw, 92px);
+}
+
+.staticCopy {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  max-width: 650px;
+  align-self: center;
+  flex-direction: column;
+  padding-block: clamp(58px, 8vh, 92px);
+}
+
+.staticCopy .eyebrow {
+  margin: 0 0 clamp(30px, 4vh, 46px);
+}
+
+.staticCopy h2 {
+  margin: 0;
+  font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+  font-size: clamp(49px, 4vw, 72px);
+  font-weight: 400;
+  letter-spacing: -0.05em;
+  line-height: 0.99;
+}
+
+.staticCopy h2 span {
+  display: block;
+}
+
+.staticCopy h2 span+span {
+  margin-top: 0.42em;
+  color: #3b3e38;
+}
+
+.staticCopy .transition {
+  max-width: 360px;
+  margin: clamp(35px, 4.8vh, 54px) 0 0;
+  padding-top: 20px;
+  font-size: clamp(21px, 1.55vw, 28px);
+}
+
+.desktopStage {
+  position: relative;
+  height: min(82svh, 820px);
+  align-self: center;
+}
+
+.methodIndex {
+  position: absolute;
+  z-index: 6;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: grid;
+  height: 62px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border-bottom: 1px solid var(--approach-line);
+}
+
+.methodIndex::before {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: 1px;
+  background: var(--approach-line-strong);
+  content: "";
+}
+
+.methodIndex>i {
+  position: absolute;
+  z-index: 2;
+  bottom: -3px;
+  width: 6px;
+  height: 6px;
+  transform: translateX(-50%) rotate(45deg);
+  background: var(--approach-accent);
+  box-shadow: 0 0 0 4px rgb(149 95 66 / 10%);
+}
+
+.methodIndex p {
+  margin: 0;
+  color: #777a72;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: clamp(8px, 0.57vw, 10px);
+  letter-spacing: 0.09em;
+  line-height: 1.35;
+}
+
+.methodIndex p:not(:first-of-type) {
+  padding-left: 14px;
+  border-left: 1px solid var(--approach-line);
+}
+
+.methodIndex p span {
+  display: block;
+  margin-top: 5px;
+  color: #555851;
+  font-size: clamp(6px, 0.48vw, 8px);
+}
+
+.desktopScene {
+  position: absolute;
+  z-index: 2;
+  inset: 76px 0 0;
+  will-change: transform, opacity;
+}
+
+.scene {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  padding-block: clamp(24px, 3.2vh, 36px) 1%;
+}
+
+.sceneCopy {
+  display: grid;
+  align-items: start;
+  border-bottom: 1px solid var(--approach-line);
+  padding-bottom: clamp(20px, 2.8vh, 30px);
+  grid-template-columns: minmax(145px, 0.45fr) minmax(260px, 1fr);
+  column-gap: clamp(24px, 3vw, 50px);
+}
+
+.sceneCopy .stepLabel {
+  margin: 5px 0 0;
+}
+
+.sceneCopy h3 {
+  margin: 0;
+  font-family: "Iowan Old Style", "Baskerville", "Times New Roman", serif;
+  font-size: clamp(30px, 2.35vw, 42px);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1.03;
+}
+
+.sceneCopy .stepBody {
+  grid-column: 2;
+  max-width: 620px;
+  margin: 15px 0 0;
+  font-size: clamp(13px, 0.9vw, 16px);
+  line-height: 1.48;
+}
+
+.scene>.stepVisual {
+  flex: 1;
+  min-height: 0;
+  margin-top: clamp(20px, 2.8vh, 30px);
+}
+
+.desktopScene .signalField {
+  min-height: 150px;
+}
+
+.desktopScene .frictionVisual {
+  gap: 24px;
+}
+
+.desktopScene .approachPath {
+  padding: clamp(15px, 2vh, 21px) 0;
+}
+
+.desktopScene .roleFrame {
+  min-height: clamp(230px, 28vh, 300px);
+}
+
+.desktopScene .systemMap {
+  min-height: clamp(285px, 35vh, 360px);
+}
+
+.resultContent {
+  display: grid;
+  height: 100%;
+  align-content: center;
+  grid-template-columns: minmax(280px, 1fr) minmax(250px, 0.72fr);
+  gap: clamp(42px, 5vw, 80px);
+}
+
+.desktopScene .resultCopy p {
+  font-size: clamp(16px, 1.5vw, 32px);
+}
+
+.desktopScene .resultCopy p+p {
+  font-size: clamp(25px, 2vw, 35px);
+  line-height: 1.2;
+}
+
+.desktopScene .roleDefinition div {
+  padding: clamp(13px, 1.8vh, 18px) 0;
+}
+
+.mobileMethod {
+  display: none;
+}
+
+@media (min-width: 1100px) and (max-width: 1299px) {
+  .splitLayout {
+    grid-template-columns: minmax(330px, 0.72fr) minmax(500px, 1.28fr);
+    gap: 48px;
+  }
+
+  .staticCopy h2 {
+    font-size: clamp(48px, 4vw, 60px);
+  }
+
+  .methodIndex p span {
+    letter-spacing: 0.04em;
+  }
+
+  .sceneCopy {
+    grid-template-columns: 126px 1fr;
+    column-gap: 20px;
+  }
+
+  .sceneCopy h3 {
+    font-size: 31px;
+  }
+
+  .sceneCopy .stepBody {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 1100px) and (max-height: 820px) {
+  .desktopStage {
+    height: 88svh;
+  }
+
+  .staticCopy h2 {
+    font-size: clamp(45px, 3.7vw, 62px);
+  }
+
+  .staticCopy .transition {
+    margin-top: 30px;
+  }
+
+  .methodIndex {
+    height: 50px;
+  }
+
+  .desktopScene {
+    top: 60px;
+  }
+
+  .scene {
+    padding-top: 16px;
+  }
+
+  .sceneCopy {
+    padding-bottom: 16px;
+  }
+
+  .sceneCopy h3 {
+    font-size: clamp(27px, 2.05vw, 35px);
+  }
+
+  .sceneCopy .stepBody {
+    margin-top: 10px;
+  }
+
+  .scene>.stepVisual {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 1099px) {
+  .methodTrack {
+    height: auto;
+  }
+
+  .stickyViewport {
+    position: relative;
+    height: auto;
+    overflow: visible;
+  }
+
+  .splitLayout {
+    display: block;
+    width: 100%;
+  }
+
+  .staticCopy {
+    width: calc(100% - 80px);
+    max-width: 900px;
+    margin-inline: auto;
+    padding: 190px 0 130px;
+  }
+
+  .staticCopy h2 {
+    max-width: 820px;
+    font-size: clamp(60px, 8.4vw, 82px);
+  }
+
+  .staticCopy .transition {
+    margin-left: auto;
+  }
+
+  .desktopStage {
+    display: none;
+  }
+
+  .mobileMethod {
+    display: block;
+    width: calc(100% - 80px);
+    max-width: 900px;
+    margin-inline: auto;
+  }
+
+  .mobileMethod>div {
+    border-top: 1px solid var(--approach-line);
+  }
+
+  .mobileMethod .scene {
+    min-height: auto;
+    padding: 100px 0 120px 38px;
+  }
+
+  .mobileMethod .sceneCopy {
+    display: block;
+    max-width: 690px;
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .mobileMethod .sceneCopy h3 {
+    margin-top: 28px;
+    font-size: clamp(42px, 6vw, 58px);
+  }
+
+  .mobileMethod .sceneCopy .stepBody {
+    max-width: 650px;
+    margin-top: 28px;
+    font-size: clamp(16px, 2vw, 19px);
+    line-height: 1.58;
+  }
+
+  .mobileMethod .stepVisual {
+    max-width: 720px;
+    min-height: 410px;
+    margin: 80px auto 0;
+  }
+
+  .mobileResult {
+    padding: 130px 0 150px 38px;
+  }
+
+  .mobileResult .resultContent {
+    display: grid;
+    height: auto;
+    grid-template-columns: 1fr;
+    gap: 75px;
+  }
+
+  .mobileResult .roleDefinition {
+    max-width: 660px;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .staticCopy,
+  .mobileMethod {
+    width: calc(100% - 48px);
+  }
+
+  .staticCopy {
+    padding: 150px 0 105px;
+  }
+
+  .staticCopy .eyebrow {
+    margin-bottom: 34px;
+  }
+
+  .staticCopy h2 {
+    font-size: clamp(46px, 13vw, 60px);
+  }
+
+  .staticCopy .transition {
+    margin-top: 46px;
+    font-size: 23px;
+  }
+
+  .mobileMethod .scene {
+    padding: 78px 0 94px 22px;
+  }
+
+  .mobileMethod .sceneCopy h3 {
+    margin-top: 24px;
+    font-size: clamp(34px, 10vw, 45px);
+  }
+
+  .mobileMethod .sceneCopy .stepBody {
+    margin-top: 24px;
+    font-size: 15px;
+  }
+
+  .mobileMethod .stepVisual {
+    min-height: 340px;
+    margin-top: 62px;
+  }
+
+  .mobileResult {
+    padding: 105px 0 120px 22px;
+  }
+
+  .mobileResult .resultCopy p {
+    font-size: clamp(40px, 11vw, 52px);
+  }
+
+  .mobileResult .resultCopy p+p {
+    font-size: clamp(27px, 7.8vw, 36px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .methodTrack {
+    height: auto;
+  }
+
+  .stickyViewport {
+    position: relative;
+    height: auto;
+    overflow: visible;
+  }
+
+  .splitLayout {
+    display: block;
+    width: 100%;
+  }
+
+  .staticCopy {
+    width: calc(100% - clamp(64px, 12vw, 180px));
+    max-width: 1000px;
+    margin-inline: auto;
+    padding: 160px 0 120px;
+  }
+
+  .desktopStage {
+    display: none;
+  }
+
+  .mobileMethod {
+    display: block;
+    width: calc(100% - clamp(64px, 12vw, 180px));
+    max-width: 1000px;
+    margin-inline: auto;
+  }
+
+  .mobileMethod>div {
+    border-top: 1px solid var(--approach-line);
+  }
+
+  .mobileMethod .scene,
+  .mobileResult {
+    height: auto;
+    padding: 100px 0;
+  }
+}

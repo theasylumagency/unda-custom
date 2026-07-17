@@ -1,0 +1,8 @@
+⨯ Another next dev server is already running.
+
+- Local:        http://localhost:3000
+- PID:          17140
+- Dir:          E:\desk\unda project\unda-custom
+- Log:          .next\dev\logs\next-development.log
+
+Run taskkill /PID 17140 /F to stop it.

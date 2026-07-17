@@ -1,23 +1,43 @@
-import { DavidSculpture } from "./DavidSculpture";
+import type { MotionStyle, MotionValue } from "framer-motion";
+import { DavidVisual } from "./DavidVisual";
 import { EditorialBeam } from "./EditorialBeam";
 import { KnowledgeFragments } from "./KnowledgeFragments";
+import { OperatorArchitecture } from "./OperatorArchitecture";
+import type { Locale } from "@/lib/i18n";
 import styles from "./hero.module.css";
 
-export function HeroScene() {
+interface HeroSceneProps {
+  architectureStyle?: MotionStyle;
+  beamStyle?: MotionStyle;
+  davidStyle?: MotionStyle;
+  fragmentStyle?: MotionStyle;
+  reducedMotion: boolean;
+  structureX?: MotionValue<number>;
+  structureY?: MotionValue<number>;
+  locale: Locale;
+}
+
+export function HeroScene({
+  architectureStyle,
+  beamStyle,
+  davidStyle,
+  fragmentStyle,
+  reducedMotion,
+  structureX,
+  structureY,
+  locale,
+}: HeroSceneProps) {
   return (
-    <div className={styles.scene} id="how-operators-work">
-      <p className={styles.sceneCaption}>
-        <span>01</span>
-        Built from the way you work
-      </p>
-      <KnowledgeFragments />
-      <EditorialBeam />
-      <DavidSculpture />
-      <div className={styles.coordinate} aria-hidden="true">
-        <span>YOUR KNOWLEDGE</span>
-        <i />
-        <span>YOUR OPERATOR</span>
-      </div>
+    <div className={styles.scene} id="hero-operator-visual">
+      <KnowledgeFragments reducedMotion={reducedMotion} scrollStyle={fragmentStyle} locale={locale} />
+      <DavidVisual
+        reducedMotion={reducedMotion}
+        scrollStyle={davidStyle}
+        structureX={structureX}
+        structureY={structureY}
+      />
+      <EditorialBeam reducedMotion={reducedMotion} scrollStyle={beamStyle} />
+      <OperatorArchitecture reducedMotion={reducedMotion} scrollStyle={architectureStyle} locale={locale} />
     </div>
   );
 }
